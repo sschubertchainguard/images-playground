@@ -5,7 +5,7 @@ on:
 
 jobs:
   test-install:
-    name: test install
+    name: actions pull token example
     
     runs-on: ubuntu-latest
     
