@@ -15,6 +15,6 @@ jobs:
 
     - uses: chainguard-dev/actions/setup-chainctl@main
       with:
-        identity: ${{secrets.CHAINCTL_ID}}
+        identity: ${{secrets.CHAINCTL_ID2}}
 
     - run: chainctl iam groups ls
