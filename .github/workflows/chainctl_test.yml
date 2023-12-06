@@ -1,0 +1,20 @@
+name: Assume and Explore
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  assume-and-explore:
+    name: actions assume example
+
+    permissions:
+      id-token: read
+
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: chainguard-dev/actions/setup-chainctl@main
+      with:
+        identity: 04f587a0199562258097058b4452c7370a3298c0/872dc32df6d76477
+
+    - run: chainctl iam groups ls
