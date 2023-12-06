@@ -14,6 +14,7 @@ jobs:
       run: |
           curl -o chainctl "https://dl.enforce.dev/chainctl/latest/chainctl_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m | sed 's/aarch64/arm64/')"
           sudo install -o root -g root -m 0755 chainctl /usr/bin/chainctl
+          chainctl -h
 
     - name: Login to chainctl
       run: |
