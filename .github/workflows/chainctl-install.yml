@@ -1,4 +1,4 @@
-name: chainctl install
+name: chainctl with pull token
 
 on:
   workflow_dispatch: {}
