@@ -4,8 +4,8 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  test-install:
-    name: actions pull token example
+  chainctl-pull-token:
+    name: chainctl pull token example
     
     runs-on: ubuntu-latest
     
