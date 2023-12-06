@@ -8,7 +8,7 @@ jobs:
     name: actions assume example
 
     permissions:
-      id-token: read
+      id-token: write
 
     runs-on: ubuntu-latest
     steps:
