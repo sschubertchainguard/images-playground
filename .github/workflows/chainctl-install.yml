@@ -21,3 +21,4 @@ jobs:
           chainctl auth login --identity=${{secrets.CGR_PULL_ID}} --identity-token=${{secrets.CGR_PULL_TOKEN}}
           echo test gap
           chainctl auth configure-docker --identity=${{secrets.CGR_PULL_ID}} --identity-token=${{secrets.CGR_PULL_TOKEN}}
+          chainctl image list
