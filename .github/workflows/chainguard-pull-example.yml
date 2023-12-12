@@ -23,7 +23,7 @@ jobs:
       - name: Install Chainctl
         uses: chainguard-dev/actions/setup-chainctl@main
         with:
-          identity: ${{CHAINCTL_ID}}
+          identity: ${{secrets.CHAINCTL_ID}}
 
       - name: Run Chainctl groups ls
         run: chainctl iam groups ls -o json
