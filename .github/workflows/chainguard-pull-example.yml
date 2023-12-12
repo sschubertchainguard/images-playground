@@ -39,7 +39,7 @@ jobs:
           set -e
           
           registry="cgr.dev/scorwin.dev/"
-          images=("curl")
+          images=("kubectl","node")
           
           # Iterate through the array using a for loop
           for image in "${images[@]}"; do
