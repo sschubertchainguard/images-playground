@@ -1,0 +1,50 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Chainguard Pull Example
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+  workflow_call: { }
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  chainguard-pull:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Install Chainctl
+        uses: chainguard-dev/actions/setup-chainctl@main
+        with:
+          identity: ${{CHAINCTL_ID}}
+
+      - name: Run Chainctl groups ls
+        run: chainctl iam groups ls -o json
+
+      - name: Run demo.sh
+        run: ./demo.sh
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          #!/usr/bin/env bash
+          
+          set -e
+          
+          registry="cgr.dev/scorwin.dev/"
+          images=("curl")
+          
+          # Iterate through the array using a for loop
+          for image in "${images[@]}"; do
+              echo "Current image: $image"
+              docker pull "$registry$image"
+          done
+          
+          docker image ls
