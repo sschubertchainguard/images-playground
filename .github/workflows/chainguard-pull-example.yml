@@ -3,13 +3,17 @@
 name: Chainguard Pull Example
 
 on:
+  # Triggers on push events for the "main" branch
   push:
     branches: [ "main" ]
+  # Allow workflow to be triggered manually
   workflow_dispatch: {}
-  workflow_call: { }
+  # Allow workflow to be called by other workflows
+  workflow_call: {}
 
 permissions:
   contents: read
+  # Required by Chainguard's OIDC federation.
   id-token: write
 
 jobs:
@@ -28,18 +32,15 @@ jobs:
       - name: Run Chainctl groups ls
         run: chainctl iam groups ls -o json
 
-      #- name: Run demo.sh
-      #  run: ./demo.sh
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      # Pull Docker Images for each image in the array
+      - name: Run Docker Pull
         run: |
           #!/usr/bin/env bash
           
           set -e
           
           registry="cgr.dev/scorwin.dev/"
-          images=("curl" "kubectl" "node")
+          images=("curl:latest-dev" "kubectl:latest-dev" "node:latest-dev")
           
           # Iterate through the array using a for loop
           for image in "${images[@]}"; do
